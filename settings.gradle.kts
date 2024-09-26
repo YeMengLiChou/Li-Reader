@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google {
             content {
@@ -21,4 +22,7 @@ dependencyResolutionManagement {
 
 rootProject.name = "LiReader"
 include(":app")
- 
+include(":baselib")
+include(":features")
+include(":core:debug")
+include(":core:reader-epub")
