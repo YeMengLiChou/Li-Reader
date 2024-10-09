@@ -45,7 +45,7 @@ class EpubBookProcessor (
         EpubProcessStats.onProcessStart()
 
         val book = EpubBook(path).apply {
-            this.resources = processZipResources()
+            resources = processZipResources()
         }
 
         val mimetype = book.resources.remove(EpubConstants.NAME_MIMETYPE)
