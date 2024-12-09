@@ -9,6 +9,6 @@ dependencyResolutionManagement {
         }
     }
 }
-
+println("logic: ${gradle.gradleVersion} ${gradle.gradleHomeDir}")
 rootProject.name = "build-logic"
 include(":convention")

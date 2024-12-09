@@ -63,6 +63,13 @@ kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-pl
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 room-gradlePlugin = { group = "androidx.room", name = "room-gradle-plugin", version.ref = "room" }
 
+kspApi = { group = "com.google.devtools.ksp", name = "symbol-processing-api", version.ref = "ksp" }
+
+# from li-utils
+startup-compiler = { group = "cn.li.startup", name = "startup-compiler", version = "unspecified"}
+startup-runtime = { group = "cn.li.startup", name = "startup-runtime", version = "unspecified"}
+
+viewbinding = { group = "androidx.databinding", name = "viewbinding", version = "8.6.0"}
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -3,6 +3,8 @@ package cn.li.reader.convention.flavor
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
+import com.android.build.api.dsl.ProductFlavor
+import org.gradle.api.Action
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.findByType
@@ -45,10 +47,12 @@ class FlavorConventionPlugin: Plugin<Project> {
             productFlavors {
                 create(FlavorConstants.FlavorType.LOCAL_TEST) {
                     dimension = FlavorConstants.FlavorDimension.DEBUG
+                    fixVariantsMatchingCallback()
                 }
 
                 create(FlavorConstants.FlavorType.OFFICIAL) {
                     dimension = FlavorConstants.FlavorDimension.DEBUG
+                    fixVariantsMatchingCallback()
                 }
             }
         }
@@ -62,15 +66,22 @@ class FlavorConventionPlugin: Plugin<Project> {
                     dimension = FlavorConstants.FlavorDimension.DEBUG
                     applicationIdSuffix = ".localtest"
                     versionNameSuffix = "-localtest"
+                    fixVariantsMatchingCallback()
                 }
 
                 create(FlavorConstants.FlavorType.OFFICIAL) {
                     dimension = FlavorConstants.FlavorDimension.DEBUG
                     applicationIdSuffix = ".official"
                     versionNameSuffix = "-official"
+                    fixVariantsMatchingCallback()
                 }
             }
         }
+    }
+
+    private fun ProductFlavor.fixVariantsMatchingCallback() {
+//        matchingFallbacks.add("debug")
+//        matchingFallbacks.add("release")
     }
 
 }

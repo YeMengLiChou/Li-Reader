@@ -9,7 +9,8 @@ import android.os.Build
 import android.os.Environment
 import android.os.StatFs
 import android.view.WindowManager
-import cn.li.baselib.dimen.dp
+import cn.li.baselib.ext.dp
+import cn.li.baselib.ext.dpInt
 import java.io.BufferedReader
 import java.io.FileReader
 
@@ -90,7 +91,7 @@ object DeviceUtils {
             result = context.resources.getDimensionPixelSize(resourceId)
         }
         if (result == 0) {
-            result = 25.dp
+            result = 25.dpInt
         }
         statusBarHeight = result
         return result

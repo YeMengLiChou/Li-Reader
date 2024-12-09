@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.reader.android.library)
 }
 
+android {
+    namespace = "cn.li.reader.baselib"
+}
 
 
 dependencies {

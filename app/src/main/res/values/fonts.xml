@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+    <style name="TextStyle_Test">
+        <item name="android:fontFamily">@font/font_regular</item>
+    </style>
+</resources>

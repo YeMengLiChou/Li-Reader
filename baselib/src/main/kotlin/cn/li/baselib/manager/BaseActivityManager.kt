@@ -139,4 +139,8 @@ object BaseActivityManager {
             }
         }
     }
+
+    fun forEachActivity(action: (Activity) -> Unit) {
+        mActivityStack.forEach(action)
+    }
 }

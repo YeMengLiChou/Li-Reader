@@ -69,7 +69,7 @@ internal class MMKVAutoCloseSharePreference(
                 val mmkv = try {
                     MMKV.mmkvWithID(cacheId, MMKV.MULTI_PROCESS_MODE)
                 } catch (e: Throwable) {
-                    MMKV.initialize(BaseApplication.getApp())
+                    MMKV.initialize(BaseApplication.getContext())
                     MMKV.setLogLevel(MMKVLogLevel.LevelWarning)
                     MMKV.mmkvWithID(cacheId, MMKV.MULTI_PROCESS_MODE)
                 }

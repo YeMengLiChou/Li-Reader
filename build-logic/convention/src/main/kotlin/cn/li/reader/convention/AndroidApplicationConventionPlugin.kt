@@ -19,8 +19,10 @@ class AndroidApplicationConventionPlugin: Plugin<Project> {
                apply(libs.getPluginId("kotlin-android"))
                apply(libs.getPluginId("ksp"))
            }
-
             configureCommon(target, extensions.getByType<ApplicationExtension>())
+
+            
         }
+
     }
 }

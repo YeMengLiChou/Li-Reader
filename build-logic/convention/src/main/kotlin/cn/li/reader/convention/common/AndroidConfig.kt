@@ -5,6 +5,11 @@ import com.android.build.api.dsl.CommonExtension
 import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.JavaVersion
 import org.gradle.api.Project
+import org.gradle.api.plugins.JavaPlugin
+import org.gradle.api.plugins.JavaPluginExtension
+import org.gradle.jvm.toolchain.JavaLanguageVersion
+import org.gradle.kotlin.dsl.configure
+import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
@@ -12,9 +17,11 @@ internal fun configureCommon(
     project: Project,
     commonExtension: CommonExtension<*, *, *, *, *, *>
 ) {
+    project.dependencies {
+        add("compileOnly", project.libs.findLibrary("viewbinding").get())
+    }
     val properties = ProjectProperties.from(project)
     commonExtension.apply {
-        namespace = properties.applicationId
         compileSdk = properties.compileSdk
 
         defaultConfig {
@@ -26,6 +33,7 @@ internal fun configureCommon(
             sourceCompatibility = JavaVersion.VERSION_1_8
             targetCompatibility = JavaVersion.VERSION_1_8
         }
+
 
         buildFeatures {
             buildConfig = true
@@ -40,6 +48,11 @@ internal fun configureCommon(
 
     project.configureKotlin()
 
+    project.configure<JavaPluginExtension> {
+        toolchain {
+            languageVersion.set(JavaLanguageVersion.of(17))
+        }
+    }
 }
 
 // 配置 Application 模块

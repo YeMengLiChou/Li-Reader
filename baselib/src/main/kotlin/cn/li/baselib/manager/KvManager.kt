@@ -8,19 +8,21 @@ import cn.li.baselib.storage.sp.MMKVAutoCloseSharePreference
  *
  * @author Grimrise 2024/9/22
  */
-class KvManager private constructor() {
+object KvManager {
 
+    const val TAG = "KvManager"
 
-    companion object {
-        val inst by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { KvManager() }
-    }
+    private const val DEFAULT_SP_ID = "default-kv"
 
     /**
      * 返回一个 [id] 对应的 [SharedPreferences]
      *
      * */
-    fun getSp(id: String): SharedPreferences {
+    fun obtainSp(id: String): SharedPreferences {
         return MMKVAutoCloseSharePreference(id)
     }
 
+    val defaultSp by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
+        obtainSp(DEFAULT_SP_ID)
+    }
 }
